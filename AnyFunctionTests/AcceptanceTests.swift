@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Deferred
+@testable import AnyFunction
 
 
 class ClosureSuccessTests: XCTestCase {
