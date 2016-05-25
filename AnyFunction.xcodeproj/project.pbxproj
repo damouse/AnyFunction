@@ -29,6 +29,7 @@
 /* Begin PBXFileReference section */
 		1EFFEB75E66C6102F2C96D83 /* Pods-AnyFunction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyFunction.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnyFunction/Pods-AnyFunction.release.xcconfig"; sourceTree = "<group>"; };
 		3E11554AC0C9CF2152F6C0AF /* Pods_AnyFunction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyFunction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		509845BE1CF6423D00F6BAC8 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		50AA9E8E1CDA77470035B484 /* AnyFunction.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnyFunction.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50AA9E901CDA77470035B484 /* AcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceTests.swift; sourceTree = "<group>"; };
 		50AA9E921CDA77470035B484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		50A3135F1CDAB66C007D0B7F /* Meta */ = {
 			isa = PBXGroup;
 			children = (
+				509845BE1CF6423D00F6BAC8 /* Podfile */,
 				A21594491B94D85C00F2F665 /* AnyFunction.podspec */,
 				A2A8279B1BD1D56D00E45CAA /* Silvery.playground */,
 			);
