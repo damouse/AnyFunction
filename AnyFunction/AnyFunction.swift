@@ -72,9 +72,10 @@ public class BaseClosure<A, B>: AnyClosureType, ClosureType {
 // Does not enforce constraints on allowed types. Strangely this method errs on BaseClosure
 public class Closure {
     
-    // This is a special case, since it covers cases where either or both A and B can be Void.
     public static func wrap<A, R>(fn: A -> R) -> BaseClosure<A, R> {
         return BaseClosure(fn: fn).setExecutor { a in
+            
+            // This is a special case, since it covers cases where either or both A and B can be Void.
             if A.self == Void.self  {
                 if a.count != 0 { throw ClosureError.BadNumberOfArguments(expected: 0, actual: a.count) }
             } else {

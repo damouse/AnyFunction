@@ -22,7 +22,7 @@ class ClosureSuccessTests: XCTestCase {
     // More than one param
     func testMultipleParams() {
         let c = Closure.wrap { (a: String, b: Int) in }
-        let ret = try! c.call(["Test", 1])
+        let _ = try! c.call(["Test", 1])
     }
 }
 
