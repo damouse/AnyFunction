@@ -1,8 +1,8 @@
 # AnyFunction 
 
-Type tools for manipulating any function in Swift 1.3. Think generic closures. 
+Generic closures in Swift 1.3 that allow invocation of arbitrary functions through reflection.  
 
-This project is suspended indefinitely. It was written before Swift 2 came out, and so likely doesn't work anymore. 
+This project is published on CocoaPods, but is suspended indefinitely. It was written before Swift 2 came out, and so likely doesn't work anymore. 
 
 ## Functionality
 Swift doesn't allow for generic closures. Specifically, it doesn't allow for variadic generic closures. 
