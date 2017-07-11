@@ -14,10 +14,10 @@ func takesAClosure<A, B, C>((A, B) -> C)
 
 But you cant take closures that may have more or less parameters: 
 ```swift
-func takesAClosure<A, B, C>((A, B) -> C) 
+func takesAClosure<A, B, C>(passedClosure: (A, B) -> C) 
 
 # This has to be a different function
-func takesAClosure<A, C>((A) -> C) 
+func takesAClosure<A, C>(passedClosure: (A) -> C) 
 ```
 
 The point of this library is create a type that can standin for any closure with any number of parameters. This is a useful function if you want to make a library that can accept arbitrary closures and both resolve and invoke them dynamically. 
