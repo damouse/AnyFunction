@@ -25,8 +25,20 @@ The point of this library is create a type that can standin for any closure with
 ```
 func TakesAnyFunction<A: AnyFunction>(A)
 
-TakesAnyFunction((Int, String) -> { return 1 })
-TakesAnyFunction((Bool) -> { return "1" })
+TakesAnyFunction((a: Int, b: String) in 1 })
+TakesAnyFunction((c: Bool) in "1" })
 ```
 
 It works by reflecting the type of the passed closure, wrapping it in an abstract `Closure` class, then exposing a method `call` that takes an array of arguments. If the number and type of arguments match the signature of the passed closure then the original closure is invoked and the results returned. 
+
+## Example
+
+```swift
+import AnyFunction
+
+let c = Closure.wrap { (a: String) in a }
+let ret = try! c.call(["Test"])
+
+print(ret) // #=> "Test"
+```
+
