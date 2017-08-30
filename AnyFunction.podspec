@@ -15,6 +15,4 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = "10.9"
     s.source_files  = "AnyFunction", "AnyFunction/**/*.{swift,h,m}"
     s.requires_arc = true
-
-    s.dependency 'DSON', '~> 1.0.1'
 end
