@@ -74,7 +74,7 @@ open class BaseClosure<A, B>: AnyClosureType, ClosureType {
 // Does not enforce constraints on allowed types. Strangely this method errs on BaseClosure
 open class Closure {
     
-    open static func wrap<A, R>(_ fn: @escaping (A) -> R) -> BaseClosure<A, R> {
+    open static func wrapOne<A, R>(_ fn: @escaping (A) -> R) -> BaseClosure<A, R> {
         return BaseClosure(fn: fn).setExecutor { a in
             
             // This is a special case, since it covers cases where either or both A and B can be Void.
@@ -87,6 +87,12 @@ open class Closure {
             // Trying to sidestep DSON updates
             // let result = A.self == Void.self ? fn(() as! A) : fn(try convert(a[0], to: A.self))
             
+            // Catch void closure wraps before trying the type coercion
+            if A.self == Void.self {
+                fn(() as! A)
+                return []
+            }
+            
             guard let a1 = a[0] as? A else { throw ClosureError.badType() }
             
             let result = A.self == Void.self ? fn(() as! A) : fn(a1)
@@ -95,7 +101,7 @@ open class Closure {
         }
     }
     
-    open static func wrap<A, B, R>(_ fn: @escaping (A, B) -> R) -> BaseClosure<(A, B), R> {
+    open static func wrapTwo<A, B, R>(_ fn: @escaping (A, B) -> R) -> BaseClosure<(A, B), R> {
         return BaseClosure(fn: fn).setExecutor { a in
             if a.count != 2 { throw ClosureError.badNumberOfArguments(expected: 2, actual: a.count) }
             // let ret = fn(try convert(a[0], to: A.self), try convert(a[1], to: B.self))
@@ -109,7 +115,7 @@ open class Closure {
         }
     }
     
-    open static func wrap<A, B, C, R>(_ fn: @escaping (A, B, C) -> R) -> BaseClosure<(A, B, C), R> {
+    open static func wrapThree<A, B, C, R>(_ fn: @escaping (A, B, C) -> R) -> BaseClosure<(A, B, C), R> {
         return BaseClosure(fn: fn).setExecutor { a in
             if a.count != 3 { throw ClosureError.badNumberOfArguments(expected: 3, actual: a.count) }
             // let ret = fn(try convert(a[0], to: A.self), try convert(a[1], to: B.self), try convert(a[2], to: C.self))

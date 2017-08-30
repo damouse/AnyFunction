@@ -11,8 +11,23 @@ import XCTest
 
 
 class ClosureSuccessTests: XCTestCase {
+    func testVoidVoid() {
+        let c = Closure.wrapOne { }
+        let ret = try! c.call([])
+        
+        XCTAssert(ret.count == 0)
+    }
+    
+    func testStringVoid() {
+        let t: (String) -> () = { (a: String) -> () in  }
+        let c = Closure.wrapOne(t)
+        let ret = try! c.call(["A"])
+        
+        XCTAssert(ret.count == 0)
+    }
+    
     func testReturn() {
-        let c = Closure.wrap { (a: String) in a }
+        let c = Closure.wrapOne { (a: String) in a }
         let ret = try! c.call(["Test"])
         
         XCTAssert(ret.count == 1)
@@ -21,7 +36,7 @@ class ClosureSuccessTests: XCTestCase {
     
     // More than one param
     func testMultipleParams() {
-        let c = Closure.wrap { (a: String, b: Int) in b }
+        let c = Closure.wrapTwo { (a: String, b: Int) in b }
         let ret = try! c.call(["Test", 1])
         
         XCTAssert(ret.count == 1)
@@ -33,7 +48,7 @@ class ClosureSuccessTests: XCTestCase {
 class ClosureFailureTests: XCTestCase {
     // Too many arguments
     func testBadNumParamsVoid() {
-        let c = Closure.wrap({ })
+        let c = Closure.wrapOne({ })
         
         do {
             try c.call([1])
@@ -43,7 +58,7 @@ class ClosureFailureTests: XCTestCase {
     
     // too few arguments
     func testBadNumParamsOne() {
-        let c = Closure.wrap({ (a: Int) in })
+        let c = Closure.wrapOne{ (a: Int) in a }
         
         do {
             try c.call([])
@@ -53,7 +68,7 @@ class ClosureFailureTests: XCTestCase {
     
     // This is already tested in Conversion tests, so more of a sanity check that the throws work correctly
     func testBadType() {
-        let c = Closure.wrap({ (a: Int) in })
+        let c = Closure.wrapOne({ (a: Int) in })
         
         do {
             try c.call(["Not an Int"])
