@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "AnyFunction"
-    s.version      = "1.0.1"
+    s.version      = "1.0.2"
     s.summary      = "Type tools for manipulating closures of distinct types"
     s.description  = <<-DESC
                         Type tools for manipulating closures of distinct types.
