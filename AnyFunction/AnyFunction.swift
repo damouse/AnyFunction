@@ -89,15 +89,16 @@ open class Closure {
             
             // Catch void closure wraps before trying the type coercion
             if A.self == Void.self {
-                fn(() as! A)
-                return []
+                let ret = fn(() as! A)
+                
+                return R.self == Void.self ? [] : [ret as! AnyObject]
             }
             
             guard let a1 = a[0] as? A else { throw ClosureError.badType() }
             
             let result = A.self == Void.self ? fn(() as! A) : fn(a1)
             
-            return R.self == Void.self ? [] : [result as! AnyObject]
+            return R.self == Void.self ? [] : [result as AnyObject]
         }
     }
     
@@ -111,7 +112,7 @@ open class Closure {
             
             let ret = fn(a1, a2)
             
-            return R.self == Void.self ? [] : [ret as! AnyObject]
+            return R.self == Void.self ? [] : [ret as AnyObject]
         }
     }
     
@@ -126,7 +127,7 @@ open class Closure {
         
             
             let ret = fn(a1, a2, a3)
-            return R.self == Void.self ? [] : [ret as! AnyObject]
+            return R.self == Void.self ? [] : [ret as AnyObject]
         }
     }
 }
