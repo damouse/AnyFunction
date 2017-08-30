@@ -156,12 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50AA9E961CDA77470035B484 /* Build configuration list for PBXNativeTarget "AnyFunctionTests" */;
 			buildPhases = (
-				2BCD9B639019DF82AA6DF86F /* 📦 Check Pods Manifest.lock */,
+				2BCD9B639019DF82AA6DF86F /* [CP] Check Pods Manifest.lock */,
 				50AA9E8A1CDA77470035B484 /* Sources */,
 				50AA9E8B1CDA77470035B484 /* Frameworks */,
 				50AA9E8C1CDA77470035B484 /* Resources */,
-				030E0E1476E502961D8E6CF9 /* 📦 Embed Pods Frameworks */,
-				6725FCB275D8E884C6711741 /* 📦 Copy Pods Resources */,
+				030E0E1476E502961D8E6CF9 /* [CP] Embed Pods Frameworks */,
+				6725FCB275D8E884C6711741 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,12 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A215943B1B94D79300F2F665 /* Build configuration list for PBXNativeTarget "AnyFunction" */;
 			buildPhases = (
-				46A1FBEAA2A62D555FE80F73 /* 📦 Check Pods Manifest.lock */,
+				46A1FBEAA2A62D555FE80F73 /* [CP] Check Pods Manifest.lock */,
 				A21594221B94D79300F2F665 /* Sources */,
 				A21594231B94D79300F2F665 /* Frameworks */,
 				A21594241B94D79300F2F665 /* Headers */,
 				A21594251B94D79300F2F665 /* Resources */,
-				9C4D3BB0AA1A38D64DA3AE9D /* 📦 Copy Pods Resources */,
+				9C4D3BB0AA1A38D64DA3AE9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,9 +205,11 @@
 				TargetAttributes = {
 					50AA9E8D1CDA77470035B484 = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0830;
 					};
 					A21594261B94D79300F2F665 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -248,14 +250,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		030E0E1476E502961D8E6CF9 /* 📦 Embed Pods Frameworks */ = {
+		030E0E1476E502961D8E6CF9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,44 +265,50 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyFunctionTests/Pods-AnyFunctionTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2BCD9B639019DF82AA6DF86F /* 📦 Check Pods Manifest.lock */ = {
+		2BCD9B639019DF82AA6DF86F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyFunctionTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		46A1FBEAA2A62D555FE80F73 /* 📦 Check Pods Manifest.lock */ = {
+		46A1FBEAA2A62D555FE80F73 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyFunction-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6725FCB275D8E884C6711741 /* 📦 Copy Pods Resources */ = {
+		6725FCB275D8E884C6711741 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,14 +316,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AnyFunctionTests/Pods-AnyFunctionTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9C4D3BB0AA1A38D64DA3AE9D /* 📦 Copy Pods Resources */ = {
+		9C4D3BB0AA1A38D64DA3AE9D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.damouse.SilveryTests;
 				PRODUCT_MODULE_NAME = SilveryTests;
 				PRODUCT_NAME = AnyFunction;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -378,6 +387,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.damouse.SilveryTests;
 				PRODUCT_MODULE_NAME = SilveryTests;
 				PRODUCT_NAME = AnyFunction;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -486,6 +496,7 @@
 				PRODUCT_NAME = AnyFunction;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -504,6 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.damouse.silvery;
 				PRODUCT_NAME = AnyFunction;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

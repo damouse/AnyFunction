@@ -21,8 +21,11 @@ class ClosureSuccessTests: XCTestCase {
     
     // More than one param
     func testMultipleParams() {
-        let c = Closure.wrap { (a: String, b: Int) in }
-        let _ = try! c.call(["Test", 1])
+        let c = Closure.wrap { (a: String, b: Int) in b }
+        let ret = try! c.call(["Test", 1])
+        
+        XCTAssert(ret.count == 1)
+        XCTAssert(ret[0] as! Int == 1)
     }
 }
 
